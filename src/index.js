@@ -12,6 +12,7 @@ class Gravatar extends React.Component {
     size: PropTypes.number,
     rating: PropTypes.string,
     default: PropTypes.string,
+    forceDefault: PropTypes.bool,
     className: PropTypes.string,
     protocol: PropTypes.string,
     style: PropTypes.object,
@@ -21,6 +22,7 @@ class Gravatar extends React.Component {
     rating: 'g',
     default: 'retro',
     protocol: '//',
+    forceDefault: false,
   }
 
   render() {
@@ -30,12 +32,14 @@ class Gravatar extends React.Component {
       s: this.props.size,
       r: this.props.rating,
       d: this.props.default,
+      f: (this.props.forceDefault?"y":"n"),
     })
 
     const retinaQuery = querystring.stringify({
       s: this.props.size * 2,
       r: this.props.rating,
       d: this.props.default,
+      f: (this.props.forceDefault?"y":"n"),
     })
 
     // Gravatar service currently trims and lowercases all registered emails
